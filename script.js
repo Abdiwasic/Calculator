@@ -19,28 +19,43 @@ const operate = (num1, num2, operator) => {
   switch (operator) {
     case "+":
       return add(num1, num2);
-      break;
     case "-":
       return subtract(num1, num2);
-      break;
     case "*":
       return multiply(num1, num2);
-      break;
     case "/":
       return divide(num1, num2);
-      break;
   }
 };
 
-const digits = document.querySelectorAll(".digit");
+const display = document.querySelector(".display");
+let isSecond = false;
 
-const isSecond = false;
-digits.forEach((digit) => {
-  digit.addEventListener("click", (e) => {
+const updateNumberVariables = () => {
+  const digits = document.querySelectorAll(".digit");
+
+  digits.forEach((digit) => {
+    digit.addEventListener("click", (e) => {
+      const value = e.target.value;
+      if (!isSecond) {
+        firstNumber += value;
+        display.textContent = firstNumber;
+      } else {
+        secondNumber += value;
+        display.textContent = secondNumber;
+      }
+    });
+  });
+};
+
+const operators = document.querySelectorAll(".operator");
+
+operators.forEach((op) => {
+  op.addEventListener("click", (e) => {
+    isSecond = true;
     const value = e.target.value;
-    if (!isSecond) {
-      firstNumber += value;
-      console.log(firstNumber);
-    }
+    operator = value;
   });
 });
+
+updateNumberVariables();
