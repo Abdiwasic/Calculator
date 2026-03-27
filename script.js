@@ -63,10 +63,9 @@ updateNumberVariables();
 const equalBtn = document.querySelector(".equal-btn");
 
 equalBtn.addEventListener("click", (e) => {
-  const result = operate(
-    parseInt(firstNumber),
-    parseInt(secondNumber),
-    operator,
-  );
+  const result = operate(Number(firstNumber), Number(secondNumber), operator);
   display.textContent = result;
+  isSecond = false;
+  firstNumber = result.toString();
+  secondNumber = "";
 });
