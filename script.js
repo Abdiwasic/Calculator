@@ -69,3 +69,13 @@ equalBtn.addEventListener("click", (e) => {
   firstNumber = result.toString();
   secondNumber = "";
 });
+
+const clearBtn = document.querySelector(".all-clear");
+
+clearBtn.addEventListener("click", (e) => {
+  firstNumber = "";
+  secondNumber = "";
+  operator = "";
+  isSecond = false;
+  display.textContent = "0";
+});
