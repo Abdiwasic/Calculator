@@ -59,3 +59,14 @@ operators.forEach((op) => {
 });
 
 updateNumberVariables();
+
+const equalBtn = document.querySelector(".equal-btn");
+
+equalBtn.addEventListener("click", (e) => {
+  const result = operate(
+    parseInt(firstNumber),
+    parseInt(secondNumber),
+    operator,
+  );
+  display.textContent = result;
+});
