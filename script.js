@@ -69,6 +69,28 @@ operators.forEach((op) => {
   });
 });
 
+const decimalPointBtn = document.querySelector(".decimal-point-btn");
+decimalPointBtn.addEventListener("click", (e) => {
+  const value = e.target.value;
+  if (!isSecond) {
+    if (firstNumber.includes(".")) return;
+    if (firstNumber === "") {
+      firstNumber = "0.";
+    } else {
+      firstNumber += value;
+    }
+    display.textContent = firstNumber;
+  } else {
+    if (secondNumber.includes(".")) return;
+    if (secondNumber === "") {
+      secondNumber = "0.";
+    } else {
+      secondNumber += value;
+    }
+    display.textContent = secondNumber;
+  }
+});
+
 updateNumberVariables();
 
 const equalBtn = document.querySelector(".equal-btn");
