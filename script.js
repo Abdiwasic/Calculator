@@ -31,8 +31,6 @@ const operate = (num1, num2, operator) => {
 const display = document.querySelector(".display");
 let isSecond = false;
 
-let isSecondOperator = false;
-
 const updateNumberVariables = () => {
   const digits = document.querySelectorAll(".digit");
 
@@ -77,7 +75,17 @@ const equalBtn = document.querySelector(".equal-btn");
 
 equalBtn.addEventListener("click", (e) => {
   const result = operate(Number(firstNumber), Number(secondNumber), operator);
-  display.textContent = result;
+  if (firstNumber === "" || secondNumber === "" || !isFinite(result)) {
+    display.textContent = "Invalid. press AC";
+    display.style.fontSize = "1rem";
+    return;
+  }
+
+  if (result % 1 !== 0) {
+    display.textContent = result.toFixed(2);
+  } else {
+    display.textContent = result;
+  }
   isSecond = false;
   firstNumber = result.toString();
   secondNumber = "";
@@ -91,4 +99,5 @@ clearBtn.addEventListener("click", (e) => {
   operator = "";
   isSecond = false;
   display.textContent = "0";
+  display.style.fontSize = "2.5rem";
 });
