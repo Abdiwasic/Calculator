@@ -31,6 +31,8 @@ const operate = (num1, num2, operator) => {
 const display = document.querySelector(".display");
 let isSecond = false;
 
+let isSecondOperator = false;
+
 const updateNumberVariables = () => {
   const digits = document.querySelectorAll(".digit");
 
@@ -52,6 +54,17 @@ const operators = document.querySelectorAll(".operator");
 
 operators.forEach((op) => {
   op.addEventListener("click", (e) => {
+    if (firstNumber !== "" && secondNumber !== "") {
+      const result = operate(
+        Number(firstNumber),
+        Number(secondNumber),
+        operator,
+      );
+      secondNumber = "";
+      firstNumber = result;
+      display.textContent = firstNumber;
+    }
+
     isSecond = true;
     const value = e.target.value;
     operator = value;

@@ -50,4 +50,8 @@ button {
   padding: 1rem 0.7rem;
   border-radius: 5px;
   font-size: 1.3rem;
+  transition: 0.2s ease;
+}
+button:hover {
+  background-color: #e0e3eb;
 }
